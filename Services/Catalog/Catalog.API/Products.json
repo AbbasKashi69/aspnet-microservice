@@ -1,0 +1,18 @@
+[
+  {
+    "name": "samsumng 150",
+    "category": "mobile",
+    "summary": "samsung summary",
+    "description": "description",
+    "imageFile": "image",
+    "price": "2.000.000"
+  },
+  {
+    "name": "nokia n9",
+    "category": "mobile",
+    "summary": "summary",
+    "description": "description",
+    "imageFile": "image",
+    "price": "3.500.000"
+  }
+]
