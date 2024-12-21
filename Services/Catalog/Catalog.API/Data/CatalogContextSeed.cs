@@ -1,4 +1,5 @@
 ﻿using Catalog.API.Entities;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Catalog.API.Data
@@ -23,7 +24,7 @@ namespace Catalog.API.Data
                 {
                     Category = "category " + i,
                     Description = "description " + i,
-                    Id = Guid.NewGuid().ToString(),
+                    Id = ObjectId.GenerateNewId().ToString(),
                     ImageFile = "image " + i,
                     Name = "nokia a " + i,
                     Price = Random.Shared.Next(1000, 98765),
