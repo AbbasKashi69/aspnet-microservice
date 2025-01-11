@@ -1,4 +1,5 @@
 ﻿using Basket.API.Entities;
+using Basket.API.GrpcServices;
 using Basket.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,14 @@ namespace Basket.API
             .WithName("getcart")
             .WithOpenApi();
 
-            app.MapPost("/cart/update", (ICartRepository cartRepository, [FromBody] Cart cart) =>
+            app.MapPost("/cart/update", async (ICartRepository cartRepository, DiscountGrpcService discountGrpcService, [FromBody] Cart cart) =>
             {
+                foreach (var item in cart.Items)
+                {
+                    var coupon = await discountGrpcService.GetDiscount(item.ProductName);
+                    item.Price -= coupon.Amount;
+                }
+
                 return cartRepository.UpdateAsync(cart);
             })
             .WithName("updatecart")
