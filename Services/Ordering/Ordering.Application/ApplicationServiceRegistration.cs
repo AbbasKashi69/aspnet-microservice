@@ -1,0 +1,30 @@
+﻿
+
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Ordering.Application.Behaviours;
+using System.Reflection;
+
+namespace Ordering.Application
+{
+    public static class ApplicationServiceRegistration
+    {
+        public static void AddApplicationServices(this IServiceCollection services)
+        {
+            //mediatr 
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(options=>
+            {
+                
+            });
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+
+            //fluent validation
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            
+        }
+    }
+}
