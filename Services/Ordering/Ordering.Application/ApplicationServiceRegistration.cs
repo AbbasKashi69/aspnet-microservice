@@ -4,6 +4,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Behaviours;
+using Ordering.Application.Contracts.Infrastructure;
 using System.Reflection;
 
 namespace Ordering.Application
@@ -16,7 +17,7 @@ namespace Ordering.Application
             //services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMediatR(options=>
             {
-                
+                options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
@@ -24,7 +25,6 @@ namespace Ordering.Application
             //fluent validation
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-            
         }
     }
 }

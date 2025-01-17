@@ -21,7 +21,7 @@ namespace Ordering.Application.Contracts.Persistence
             List<Expression<Func<T, object>>>? includes = null,
             bool disabaleTracking = true);
 
-        Task<T> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(int id);
 
         Task<T> CreateAsync(T entity);
         Task UpdateAsync(T entity);

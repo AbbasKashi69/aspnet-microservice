@@ -10,12 +10,10 @@ namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
     public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int>
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly IEmailService _emailService;
 
-        public CheckoutOrderCommandHandler(IOrderRepository orderRepository, IEmailService emailService)
+        public CheckoutOrderCommandHandler(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
-            _emailService = emailService;
         }
 
         public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
