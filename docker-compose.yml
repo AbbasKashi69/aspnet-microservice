@@ -43,6 +43,9 @@ services:
       context: .
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
+  rabbitmq:
+    image: rabbitmq:management-alpine
+
 volumes:
   mongo_data:
   portainer_data:
