@@ -25,12 +25,18 @@
       ],
       "UpstreamPathTemplate": "/products",
       "UpstreamHttpMethod": [ "GET" ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [], // array of strings
-        "EnableRateLimiting": true,
-        "Period": "5s", // seconds, minutes, hours, days
-        "PeriodTimespan": 1, // only seconds
-        "Limit": 1
+      //"RateLimitOptions": {
+      //  "ClientWhitelist": [], // array of strings
+      //  "EnableRateLimiting": true,
+      //  "Period": "5s", // seconds, minutes, hours, days
+      //  "PeriodTimespan": 1, // only seconds
+      //  "Limit": 1
+      //},
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "europe-central",
+        "Header": "OC-Caching-Control",
+        "EnableContentHashing": false // my route has GET verb only, assigning 'true' for requests with body: POST, PUT etc.
       }
     }
   ],
