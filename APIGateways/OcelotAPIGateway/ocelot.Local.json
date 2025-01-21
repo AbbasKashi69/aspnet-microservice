@@ -24,7 +24,14 @@
         }
       ],
       "UpstreamPathTemplate": "/products",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [], // array of strings
+        "EnableRateLimiting": true,
+        "Period": "5s", // seconds, minutes, hours, days
+        "PeriodTimespan": 1, // only seconds
+        "Limit": 1
+      }
     }
   ],
   "GlobalConfiguration": {

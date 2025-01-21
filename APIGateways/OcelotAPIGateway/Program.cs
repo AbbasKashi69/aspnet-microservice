@@ -13,8 +13,6 @@ builder.Services.AddOcelot(myconfig.Build());
 
 var app = builder.Build();
 
-app.MapGet("/", () => "hello werld!");
-
 await app.UseOcelot();
 
 
